@@ -1,0 +1,39 @@
+<div flex layout="column">
+    <div flex layout="row">
+        <div id='address-header' class='success-header' style='width:100%'>
+            Gracias por tu ayuda :)
+        </div>
+    </div>
+    <div flex layout='row'>
+<img width="360" src="http://maps.googleapis.com/maps/api/staticmap?center=Malabia+1700+Capital+Federal&zoom=17&scale=false&size=360x320&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CMalabia+1700+Capital+Federal" alt="Google Map of Malabia 1700 Capital Federal">
+    </div>
+    <div layout="row" class="layout-row flex" style="padding: 10px 0px 10px 0px;margin: 0px 10px 0px 10px;">
+        Malabia 1700, Ciudad Autónoma de Buenos Aires
+    </div>
+    <div flex layout='row' class='border-bottom: 2px solid #F5F5F5;'>
+        <div ng-repeat="sel in report.selectionCollection">
+            <div class="icon icon-{{sel.gender}}-sel icon-{{sel.ageRange}}"></div>
+        </div>
+        <div ng-repeat="need in report.needsCollection">
+            <div class='icon icon-{{need}} icon-need-sel'></div>
+        </div>
+    </div>
+    <div flex layout='row' style="margin-left: 8px;margin-top: 8px;margin-bottom: 8px;">
+        Refugio más cercano:
+    </div>
+    <div flex layout='row'>
+        <div flex='15'></div>
+        <div style="margin-bottom: 15px;">
+            Coronel Diaz 2110, Palermo
+        </div>
+    </div>
+    <div flex layout='row'>
+        <i class="material-icons" style='color:green;font-size:1.9em;padding-left:30px'>phone</i><h4 style="margin-left: 8px;margin-top:8px;">SAME (107)</h4>
+    </div>
+    <div flex layout='row'>
+        <i class="material-icons" style='color:green;font-size:1.9em;padding-left:30px'>phone</i><h4 style="margin-left: 8px;margin-top:8px;"> Asistencia social (108)</h4>
+    </div>
+    <a ui-sref='report_share'>
+        <md-button style='width:95%' class="md-primary md-raised">Finalizar</md-button>
+    </a>
+</div>

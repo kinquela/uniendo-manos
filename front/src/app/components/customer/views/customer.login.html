@@ -1,0 +1,20 @@
+<div layout="row" layout-align="center center" style="margin-bottom: 36px">
+  <h3 class="cls-title">Uniendo Manos</h3>
+</div>
+
+
+<div flex layout="column">
+    <md-input-container style='margin-left:15px;margin-right:15px'>
+      <label>Email</label>
+      <input type="text" ng-model="customer.email" required>
+    </md-input-container>
+    <md-input-container style='margin-left:15px;margin-right:15px'>
+      <label>Contraseña</label>
+      <input type="password" ng-model="customer.password" required>
+    </md-input-container>
+    <md-button class="md-primary md-raised" ng-click='login()'>Iniciar sesión</md-button>
+    <a layout="column" layout-align="center end" layout-margin style="margin: 8px">Olvidé mi contraseña</a>
+    
+    <md-button class="md-raised md-raised" ui-sref='customer_register'>Registrarme</md-button>
+    
+</div>

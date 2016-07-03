@@ -1,0 +1,83 @@
+<div id='address-header' style='width:100%' class="PaddingTopBottom centerText">
+    Seleccioná las características que correspondan:
+</div>
+<div class="cuerpo">
+  <div style='width:100%;display:inline-flex'>
+    <table class="tableCustom">
+      <tr>
+        <td id="centerTd"><a ng-click="setGender('male')">
+              <div class='icon icon-male PaddingTopBottom' ng-class="{'icon-male-sel': selection.gender == 'male','icon-pre-sel' : selection.gender != 'male'}"></div>
+            Hombre</a>
+            <a ng-click="setGender('female')">
+                <div class='icon icon-female PaddingTopBottom' ng-class="{'icon-female-sel': selection.gender == 'female','icon-pre-sel' : selection.gender != 'female'}"></div>
+                Mujer
+            </a>
+        </td>
+        <td>
+            <div ng-hide='selection.gender'>
+                Seleccioná el género
+            </div>
+            <table ng-show='selection.gender'>
+              <tr>
+                <td>
+                  <a ng-click="setAgeRange('elder')" >
+                      <div class='icon icon-elder icon-pre-sel'></div>
+                      Adulto Mayor
+                  </a>
+                  <a ng-click="setAgeRange('adult')" >
+                      <div class='icon icon-adult icon-pre-sel'></div>
+                      Adulto
+                  </a>
+                  <a ng-click="setAgeRange('child')" >
+                      <div class='icon icon-child icon-pre-sel'></div>
+                      Niño
+                  </a>
+                </td>
+                <td>
+                  <a ng-click="setAgeRange('baby')" >
+                      <div class='icon icon-baby icon-pre-sel'></div>
+                      Bebé
+                  </a>
+                  <a ng-click="setAgeRange('pregnant')" >
+                      <div class='icon icon-pregnant icon-pre-sel'></div>
+                      Embarazada
+                  </a>
+                </td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div  class="personCollection PaddingTopBottom">
+    <div ng-repeat='sel in selectionCollection'>
+      <div class="icon-{{sel.gender}}-sel icon-{{sel.ageRange}} icon"></div>
+    </div>
+  </div>
+  <div id='address-header' style='width:100%' class="PaddingTopBottom centerText">
+      Necesidades idenfiticadas:
+  </div>
+  <div class="needCollection" class="PaddingTopBottom">
+      <a ng-click="toggleNeed('clothes')" ng-class="{
+              'icon-need-sel': needsCollection.clothes, 'icon-pre-sel' : !needsCollection.clothes}" >
+          <div class='icon icon-clothes'></div>
+          Ropa
+      </a>
+      <a ng-click="toggleNeed('shoes')" ng-class="{
+              'icon-need-sel':needsCollection.shoes, 'icon-pre-sel' : !needsCollection.shoes}">
+          <div class='icon icon-shoes'></div>
+          Calzado
+      </a>
+      <a ng-click="toggleNeed('coat')" ng-class="{
+              'icon-need-sel':needsCollection.coat, 'icon-pre-sel' : !needsCollection.coat}" >
+          <div class='icon icon-coat'></div>
+          Frazada
+      </a>
+      <a ng-click="toggleNeed('food')" ng-class="{
+              'icon-need-sel':needsCollection.food, 'icon-pre-sel' : !needsCollection.food}">
+          <div class='icon icon-food'></div>
+          Comida
+      </a>
+  </div>
+</div>
+<button style="width:100%" ng-click="doReport()" class="md-primary md-raised md-button md-ink-ripple">Enviar</button>

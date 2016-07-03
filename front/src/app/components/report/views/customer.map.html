@@ -1,0 +1,9 @@
+<div flex layout="column" >
+	<div flex layout="row">
+		<place-autocomplete ng-model="location">Ingrese</place-autocomplete>
+	</div>
+  	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+	</ui-gmap-google-map>
+  <md-button class="md-primary md-raised" ng-click='newReport()'>Dar aviso</md-button>
+</div>
