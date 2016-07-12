@@ -1,5 +1,5 @@
 {
-  "name": "bivlio",
+  "name": "uniendo-manos",
   "description": "",
   "main": "gulpfile.js",
   "license": "ISC",
@@ -8,10 +8,14 @@
     "angular": "^1.5.5",
     "angular-ui-router": "^0.2.18",
     "angular-material": "^1.0.8",
-    "angular-mocks": "^1.5.5",
     "angular-resource": "^1.5.5",
     "a0-angular-storage": "^0.0.15",
     "angularjs-geolocation": "^0.1.1",
-    "angular-google-maps": "^2.3.3"
+    "angular-google-maps": "^2.3.3",
+    "angular-jwt": "^0.0.9",
+    "angular-cookies": "^1.5.7"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }

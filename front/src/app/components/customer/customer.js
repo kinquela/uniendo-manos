@@ -1,19 +1,11 @@
-angular.module('hogarApp').factory('Customer', function(){
-  var user;
-  var password;
-  var password2;
-  var type;
+angular.module('hogarApp').factory('Customer', function() {
+    var Customer = {};
 
-  var logedIn = false;
+    Customer.user;
+    Customer.password;
+    Customer.password2;
+    Customer.type = 'customer';
+    Customer.logedIn = false;
 
-  return {
-    email : this.user,
-    password : this.password,
-    password2 : this.password2,
-    logedIn : this.logedIn,
-    type : 'customer'
-  }
-
-
-
+    return Customer;
 })

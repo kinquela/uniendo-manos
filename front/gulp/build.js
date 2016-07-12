@@ -9,31 +9,30 @@ var gulp = require('gulp'),
         es = require('event-stream'),
         insert = require('gulp-insert'),
         flatten = require('gulp-flatten');
-        //nginclude = require('gulp-nginclude');
+//nginclude = require('gulp-nginclude');
 
 gulp.task('buildCss', function () {
     var bowerCss = gulp.src(mainBowerFiles('**/*.css'));
     var lessCss = gulp.src(gulp.srcPath + '/assets/css/**/*.less')
             .pipe(less());
 
-    return es.merge(lessCss, bowerCss)
+    return es.merge(bowerCss, lessCss)
             .pipe(concat('app.css'))
             .pipe(gulp.dest(gulp.publicPath + '/css'));
 });
 
 
 gulp.task('buildJs', function () {
-    gulp.src(mainBowerFiles('**/*.js'))
+    var bowerFiles = gulp.src(mainBowerFiles('**/*.js'));
+    var libsFiles = gulp.src(gulp.srcPath + '/libs/*.js');
+
+    es.merge(bowerFiles, libsFiles)
             .pipe(concat('vendor.js'))
             .pipe(gulp.dest(gulp.publicPath + '/js'));
 
     var src = [
-      gulp.srcPath + '/**/*.js'
+        gulp.srcPath + '/**/*.js'
     ];
-
-    if(gulp.env == "live"){
-      src.push('!' + gulp.srcPath + '/**/mocks.js');
-    }
 
     return gulp.src(src)
             .pipe(ngAnnotate())
@@ -44,9 +43,9 @@ gulp.task('buildJs', function () {
             .pipe(gulp.dest(gulp.publicPath + '/js'));
 });
 
-gulp.task('buildImg', function(){
+gulp.task('buildImg', function () {
     return gulp.src(gulp.srcPath + '/assets/img/*.*')
-        .pipe(gulp.dest(gulp.publicPath + '/img'));
+            .pipe(gulp.dest(gulp.publicPath + '/img'));
 });
 
 gulp.task('buildHtml', function () {

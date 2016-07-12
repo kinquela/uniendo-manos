@@ -1,29 +1,48 @@
-angular.module('hogarApp').controller('CustomerController', function ($scope, $state, CustomerService, Customer) {
+angular.module('hogarApp').controller('CustomerController',
+        function CustomerControllerFunction($rootScope, $scope, auth, store, $state) {
+            $scope.auth = auth;
 
-    $scope.customer = Customer;
-    $scope.login = function () {
-        var callback = function () {
-            if (Customer.type == 'organization') {
-                $state.go('report_organization_map');
+            $scope.user = '';
+            $scope.pass = '';
+
+            $scope.login = function () {
+                // Show loading indicator
+                $scope.message = 'loading...';
+                $rootScope.loading = true;
+                console.log($scope.user + $scope.pass)
+                auth.signin({
+                    connection: 'Username-Password-Authentication',
+                    username: $scope.user,
+                    password: $scope.pass,
+                    authParams: {
+                        scope: 'openid name email'
+                    }
+                });
             }
-            $state.go('report_customer_map');
-        }
 
-        CustomerService.login(callback);
-    }
-
-    $scope.logout = function () {
-        console.log('ME ESTOY TRATANDO DE DESLOGUEAR');
-    }
-
-    $scope.register = function () {
-        var callback = function () {
-            if (Customer.type == 'organization') {
-                $state.go('report_organization_map');
+            $scope.register = function () {
+                $scope.message = 'loading...';
+                $rootScope.loading = true;
+                auth.signup({
+                    connection: 'Username-Password-Authentication',
+                    email: $scope.email,
+                    password: $scope.pass,
+                    user_metadata: {
+                        age: 1
+                    },
+                    authParams: {
+                        scope: 'openid name email'
+                    }
+                });
             }
-            $state.go('report_customer_map');
-        }
 
-        CustomerService.register(callback);
-    }
-})
+            $scope.googleLogin = function () {
+                $scope.message = 'loading...';
+                $rootScope.loading = true;
+                auth.signin({
+                    connection: 'google-oauth2',
+                    scope: 'openid name email'
+                });
+            };
+        }
+);
